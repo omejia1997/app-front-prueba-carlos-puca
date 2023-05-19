@@ -39,4 +39,8 @@ export class RolService {
   deleteRol(idCourse:any){
     return this.http.delete<Boolean>(`${ROL}/delete/${idCourse}`);
   }
+
+  changeState(idCourse:any){
+    return this.http.put<AdmiRol>(`${ROL}/change-state/${idCourse}`,idCourse);
+  }
 }

@@ -41,6 +41,11 @@ export class ListUserComponent implements OnInit {
   getUsers() {
     this.getUsers$.subscribe(data =>{
       this.users = data;  
+      this.users.forEach(user => {
+        this.userService.getRoles(user.id).subscribe(data =>{
+          user.roles = data;  
+        });
+      });  
     });
   }
 

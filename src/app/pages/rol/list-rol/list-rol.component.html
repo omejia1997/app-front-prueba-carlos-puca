@@ -8,6 +8,7 @@
         <tr>
           <th>Nombre del Rol</th>
           <th>Descripción</th>
+          <th>Estado</th>
           <th>Acción</th>
         </tr>
       </thead>
@@ -15,9 +16,11 @@
         <tr *ngFor="let rol of roles">
           <td>{{ rol.nombre }}</td>
           <td>{{ rol.descripcion }}</td>
+          <td>{{ rol.status }}</td>
           <td>
             <button (click)="edit(rol)" *ngIf="rol.nombre!='ADMINISTRADOR'" class="btn btn-warning btn-sm" style="margin-right: 10px;">Editar</button>
-            <button (click)="delete(rol)" *ngIf="rol.nombre!='ADMINISTRADOR'" class="btn btn-danger btn-sm">Eliminar</button>
+            <button (click)="delete(rol)" *ngIf="rol.nombre!='ADMINISTRADOR' && rol.status=='Activo'" class="btn btn-danger btn-sm" style="margin-right: 10px;">Eliminar</button>
+            <button (click)="changeState(rol)" *ngIf="rol.nombre!='ADMINISTRADOR'" class="btn btn-primary btn-sm">Cambiar Estado</button>
           </td>
         </tr>
       </tbody>

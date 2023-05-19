@@ -11,8 +11,8 @@ import { RolService } from 'src/app/services/rol.service';
 export class ListRolComponent implements OnInit {
 
   getRoles$: Observable<AdmiRol[]>;
-  roles: AdmiRol[]= [];
-  
+  roles: AdmiRol[] = [];
+
   constructor(
     private rolService: RolService,
     private router: Router,
@@ -21,32 +21,54 @@ export class ListRolComponent implements OnInit {
   }
 
   ngOnInit(): void {
-   this.getRols();
+    this.getRols();
   }
 
   getRols() {
-    this.getRoles$.subscribe(data =>{
-      this.roles = data;  
+    this.getRoles$.subscribe(data => {
+      this.roles = data;
     });
   }
 
-  navigateCreateRol(){
+  navigateCreateRol() {
     this.router.navigate(['create-rol']);
   }
 
-  edit(rol:AdmiRol){
+  edit(rol: AdmiRol) {
     this.rolService.setRol(rol);
     this.router.navigate(['update-rol']);
   }
 
-  delete(rol:AdmiRol){
-    this.rolService.deleteRol(rol.id).subscribe({
+  delete(rol: AdmiRol) {
+    var opcion = confirm("Esta seguro de eliminar este Rol\nDebido a que se eliminaran todos los roles asignados a este usuario");
+    if (opcion == true) {
+      this.rolService.deleteRol(rol.id).subscribe({
+        next: (data) => {
+          //confirm("Curso eliminado con éxito");
+          window.location.href = window.location.href;
+        },
+        error: (err) => {
+          alert("Error al eliminar el rol")
+        },
+        complete: () => {
+          // this.isLoading = false;
+        },
+      });
+      this.router.navigate(['list-rols']);
+    } else {
+
+    }
+
+  }
+
+  changeState(rol: AdmiRol) {
+    this.rolService.changeState(rol.id).subscribe({
       next: (data) => {
         //confirm("Curso eliminado con éxito");
         window.location.href = window.location.href;
       },
       error: (err) => {
-        alert("Error al eliminar el rol")
+        alert("Error al cambiar el estado del rol")
       },
       complete: () => {
         // this.isLoading = false;

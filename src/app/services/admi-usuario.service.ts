@@ -5,6 +5,7 @@ import { AdmiUsuario } from '../models/AdmiUsuario';
 import { LoginResponse } from '../models/LoginResponse';
 import { LoginRequest } from '../models/LoginRequest';
 import { AdmiUsuarioRequest } from '../models/AdmiUsuarioRequest';
+import { AdmiRol } from '../models/AdmiRol';
 
 
 const URL = "http://localhost:5000/api"
@@ -25,6 +26,9 @@ export class AdmiUsuarioService {
     this.user$$.next(user);
   }  
 
+  getRoles(idUser:any){
+    return this.http.get<AdmiRol[]>(`${URL2}/roles/${idUser}`);
+  }
 
   login(loginRequest:LoginRequest) {
     return this.http.post<LoginResponse>(`${URL}/login/auth`,loginRequest);
@@ -58,7 +62,7 @@ export class AdmiUsuarioService {
   }
 
   deleteUser(idUser:any){
-    return this.http.delete<Boolean>(`${USER}/delete/${idUser}`);
+    return this.http.delete<Boolean>(`${URL2}/delete/${idUser}`);
   }
 
   getUserByUsername(username:string){

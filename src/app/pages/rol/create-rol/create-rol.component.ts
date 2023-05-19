@@ -36,6 +36,7 @@ export class CreateRol implements OnInit {
   }
   
   save() {
+    this.rol.status = "Activo";
     this.rolService.registerRol(this.rol).subscribe({
       next: (data) => {
         confirm("rol registrado con éxito")

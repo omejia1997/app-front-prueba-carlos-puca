@@ -57,7 +57,13 @@ export class LoginComponent implements OnInit {
         this.admiUsuarioService.getUserByUsername(this.formReactive.value.usuario).subscribe(data =>{
           console.log(data);
           localStorage.setItem('user',data.id);
-          localStorage.setItem('nameUser', data.nombres +" "+data.apellidos );;
+          localStorage.setItem('nameUser', data.nombres +" "+data.apellidos );
+          this.admiUsuarioService.getRoles(data.id).subscribe(data =>{
+            data.forEach(rol => {
+              if(rol.nombre=="ADMINISTRADOR")
+                localStorage.setItem('esAdmin','SI');
+            });    
+          });
             
         });
         

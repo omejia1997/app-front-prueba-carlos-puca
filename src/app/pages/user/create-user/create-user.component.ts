@@ -73,11 +73,15 @@ export class CreateUserComponent implements OnInit {
     this.userGuardarModel.admiRolList = this.rolesAsignados;
     this.userService.register(this.userGuardarModel).subscribe({
       next: (data) => {
+        console.log(data)
         confirm("User registrado con éxito")
         this.router.navigate(["list-user"])
       },
       error: (err) => {
-        alert("Error al registrar el User")
+        console.log(err)
+        
+        alert("Error al registrar el User "+ err.error.errorMessage)
+        
       },
       complete: () => {
         // this.isLoading = false;

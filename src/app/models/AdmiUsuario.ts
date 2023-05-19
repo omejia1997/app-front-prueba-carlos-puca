@@ -1,3 +1,5 @@
+import { AdmiRol } from "./AdmiRol";
+
 export type AdmiUsuario = {
   id?: number;
   usuario?: string;
@@ -9,5 +11,7 @@ export type AdmiUsuario = {
   usuarioCreacion?: string | null;
   fechaCreacion?: Date;
   foto?: string;
+  status?: string;
+  roles?: AdmiRol[];
 };
   

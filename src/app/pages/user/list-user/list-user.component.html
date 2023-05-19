@@ -24,6 +24,8 @@
           <th>Apellidos</th>
           <th>Dirección</th>
           <th>Teléfono</th>
+          <th>Roles</th>
+          <th>Estado</th>
           <th>Acción</th>
         </tr>
       </thead>
@@ -33,9 +35,11 @@
           <td>{{ user.apellidos }}</td>
           <td>{{ user.direccion }}</td>
           <td>{{ user.telefono }}</td>
+          <td ><div *ngFor="let rol of user.roles"><span>{{ rol.nombre}}</span><br></div></td>
+          <td>{{ user.status }}</td>
           <td>
             <button (click)="edit(user)" class="btn btn-warning btn-sm" style="margin-right: 10px;">Editar</button>
-            <button (click)="delete(user)" class="btn btn-danger btn-sm">Eliminar</button>
+            <button (click)="delete(user)" class="btn btn-danger btn-sm">Cambiar Estado</button>
           </td>
         </tr>
       </tbody>
