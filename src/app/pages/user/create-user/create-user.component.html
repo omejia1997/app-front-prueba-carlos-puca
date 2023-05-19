@@ -25,7 +25,7 @@
           <div class="form-group mb-3">
             <label for="password" style="font-weight: bold;">Password:</label>
             <input [(ngModel)]="userModel.password" type="text" name="password" id="password" class="form-control"
-              >
+            formControlName="password">
             <small class="text-danger"
               *ngIf="formulario.get('password')?.errors?.['required'] && formulario.get('password')?.touched">Complete
               este

@@ -82,13 +82,13 @@ export class UpdateUserComponent implements OnInit {
     this.userGuardarModel.admiUsuario = this.userModel;
     this.userGuardarModel.admiRolList = this.rolesAsignados;
     console.log(this.userGuardarModel);
-    this.userService.register(this.userGuardarModel).subscribe({
+    this.userService.updateUser(this.userModel,this.userModel.id).subscribe({
       next: (data) => {
-        confirm("User registrado con éxito")
+        confirm("User modificado con éxito")
         this.router.navigate(["list-user"])
       },
       error: (err) => {
-        alert("Error al registrar el User")
+        alert("Error al modificar el User" +err.response.data.message)
       },
       complete: () => {
         // this.isLoading = false;

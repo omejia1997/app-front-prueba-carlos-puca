@@ -71,7 +71,6 @@ export class CreateUserComponent implements OnInit {
     this.userModel.usuarioCreacion = localStorage.getItem('nameUser');
     this.userGuardarModel.admiUsuario = this.userModel;
     this.userGuardarModel.admiRolList = this.rolesAsignados;
-    console.log(this.userGuardarModel);
     this.userService.register(this.userGuardarModel).subscribe({
       next: (data) => {
         confirm("User registrado con éxito")

@@ -34,8 +34,8 @@ export class AdmiUsuarioService {
     return this.http.get<AdmiUsuario>(`${USER}/userById/${userId}`);
   }
 
-  updateUser(user:AdmiUsuario) {
-    return this.http.put<any>(`${USER}/update_user`,user); 
+  updateUser(user:AdmiUsuario,idUser:any) {
+    return this.http.put<any>(`${URL2}/update/${idUser}`,user); 
   }
 
   register(user:AdmiUsuarioRequest) {

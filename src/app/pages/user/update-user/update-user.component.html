@@ -6,7 +6,7 @@
         <form [formGroup]="formulario" (ngSubmit)="save()" class="border p-3 form">
           <div style="width: 100%;text-align: center;">
             <span style="font-size: 25px;">
-              Registro del Usuario
+              Actualizzación de datos del Usuario
             </span>
           </div>
 
@@ -25,7 +25,7 @@
           <div class="form-group mb-3">
             <label for="password" style="font-weight: bold;">Password:</label>
             <input [(ngModel)]="userModel.password" type="text" name="password" id="password" class="form-control"
-              >
+            formControlName="password">
             <small class="text-danger"
               *ngIf="formulario.get('password')?.errors?.['required'] && formulario.get('password')?.touched">Complete
               este
