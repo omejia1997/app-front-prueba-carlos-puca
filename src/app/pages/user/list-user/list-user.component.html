@@ -1,0 +1,44 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <h2 style="text-align: center;">Usuarios</h2>
+  <button class="btn btn-secondary btn-sm" (click)="navigateCreateUser()" style="margin-bottom:10px;">Crear un nuevo
+    Usuario</button>
+  <!--<br><button class="btn btn-secondary btn-sm" (click)="listUserByRol()" style="margin-bottom:10px;">Listar todos los
+    Usuarios</button>
+  
+    <h2 style="text-align: center;">Listar Usuarios por Roles</h2>
+  <div style="display: flex;">
+    <div class="form-group col align-self-center col-sm-6" style="margin: auto;">
+      <select name="proyecto" [(ngModel)]="rolModel" class="form-select" (change)="getUsersByRol()">
+        <option [ngValue]="rol" *ngFor="let rol of roles">{{rol.nombre}}</option>
+      </select>
+    </div>
+  </div>
+  <br>
+-->
+  <div class="table-responsive">
+    <table class="table table-hover text-center">
+      <thead class="table-dark">
+        <tr>
+          <th>Nombres</th>
+          <th>Apellidos</th>
+          <th>Dirección</th>
+          <th>Teléfono</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.nombres }}</td>
+          <td>{{ user.apellidos }}</td>
+          <td>{{ user.direccion }}</td>
+          <td>{{ user.telefono }}</td>
+          <td>
+            <button (click)="edit(user)" class="btn btn-warning btn-sm" style="margin-right: 10px;">Editar</button>
+            <button (click)="delete(user)" class="btn btn-danger btn-sm">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

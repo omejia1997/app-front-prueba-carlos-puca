@@ -1,0 +1,26 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <h2 style="text-align: center;">Roles</h2>
+  <button class="btn btn-secondary btn-sm" (click)="navigateCreateRol()" style="margin-bottom:10px;">Crear un nuevo Rol</button>
+  <div class="table-responsive">
+    <table class="table table-hover text-center">
+      <thead class="table-dark">
+        <tr>
+          <th>Nombre del Rol</th>
+          <th>Descripción</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let rol of roles">
+          <td>{{ rol.nombre }}</td>
+          <td>{{ rol.descripcion }}</td>
+          <td>
+            <button (click)="edit(rol)" *ngIf="rol.nombre!='ADMINISTRADOR'" class="btn btn-warning btn-sm" style="margin-right: 10px;">Editar</button>
+            <button (click)="delete(rol)" *ngIf="rol.nombre!='ADMINISTRADOR'" class="btn btn-danger btn-sm">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

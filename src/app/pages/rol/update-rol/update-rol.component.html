@@ -1,0 +1,40 @@
+<app-navbar></app-navbar>
+<div class="container">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-5 align-self-center" style="display: flex;">
+        <form [formGroup]="formulario" (ngSubmit)="save()" class="border p-3 form">
+          <div style="width: 100%;text-align: center;">
+            <span style="font-size: 25px;">
+              Editar datos del Rol
+            </span>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="name" style="font-weight: bold;">Nombre del Curso:</label>
+            <input [(ngModel)]="rol.nombre" type="text" name="name" id="name" class="form-control"
+              formControlName="name">
+            <small class="text-danger"
+              *ngIf="formulario.get('name')?.errors?.['required'] && formulario.get('name')?.touched">Complete
+              este
+              campo</small>
+          </div>
+
+          <div class="form-group mb-3">
+            <label for="descripcion" style="font-weight: bold;">Documentación teórica (Total de documentos):</label>
+            <input [(ngModel)]="rol.descripcion" type="text" name="descripcion" id="descripcion" class="form-control"
+              formControlName="descripcion">
+            <small class="text-danger"
+              *ngIf="formulario.get('descripcion')?.errors?.['required'] && formulario.get('descripcion')?.touched">Complete
+              este
+              campo</small>
+          </div>
+
+
+          <button type="submit"
+            class="btn btn-primary btn-sm form-control" data-bs-toggle="modal"
+            data-bs-target="#exampleModal">Actualizar Campos</button>
+            
+        </form>
+      </div>
+    </div>
